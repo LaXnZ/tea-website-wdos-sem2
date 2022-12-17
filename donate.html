@@ -50,32 +50,38 @@
                 <p class="boxDono">Please donate to our Tea Leaf Trust general fund where we will allocate your donations to the most needed project. 
                   Thank you.</p>
                 
+                  <div class="popupDonate" id="popup">
+                    <img src="images/404-tick.png">
+                    <h2>Thank you for your Donation!</h2>
+                    <button type="button" id="closePopup">Ok</button>
+                </div>
+
                   <form class="donoUI">
                     <fieldset>
                     <legend>DONATE</legend>
                     <pre>
 
-CHOOSE AN AMOUNT  <select id="amount" name="amount">
-                    <option value="100">100LKR</option>
-                    <option value="500">500LKR</option>
-                    <option value="1000">1000LKR</option>
-                    <option value="2000">2000LKR</option>
-                    <option value="5000">5000LKR</option>
+Choose an Amount  <select id="amount" name="amount">
+                    <option value="100">100 LKR</option>
+                    <option value="500">500 LKR</option>
+                    <option value="1000">1000 LKR</option>
+                    <option value="2000">2000 LKR</option>
+                    <option value="5000">5000 LKR</option>
                   </select>  
         
-FULL NAME        <input type="text" id="fName" maxlength="30"><br>
-ADDRESS          <input type="text" id="address" maxlength="30"><br>
+Full Name        <input type="text" id="fName" maxlength="30" required><br>
+Address          <input type="text" id="address" maxlength="30" required><br>
 
-Card Number
-<input type="tel" id="cNumber" maxlength="16" required>  
-Expire Date             CVC/CVV                         
-<input type="tel" id="eDate" maxlength="5" required> <input type="tel" id="cvv" maxlength="3" required>
-Name on Card
-<input type="text" id="nameOnCard" maxlength="30" required>
+Card Number              Name on Card
+<input type="tel" id="cNumber" maxlength="16" required>  <input type="text" id="nameOnCard" maxlength="30" required>
+Expire Date                                      
+<input name="date" id="exDate" type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+CVC/CVV  
+<input type="password" id="cvv" maxlength="3" required>
+
                     </pre>  
-                    <input type="submit" id="donateSubmit" value ="Donate">    
+                    <input type="button" id="donateSubmit" value ="Donate">    
                     </fieldset>   
-        
                   </form>
                 
                 <p class="boxDono">Our mandate is to deliver high quality, accessible educational programmes, both full-time and part time, to young 
@@ -127,7 +133,7 @@ Name on Card
                       
                 <img class ="itemImg" src="images/local2.jpg">
                 <br><br>
-                <h3>Unique Ceylon Tea Sri Lankan Design Classic T-Shirt</h3>
+                <h3>Unique Ceylon Tea T-Shirt</h3>
                 From $23.83
                 <br><br>
                     

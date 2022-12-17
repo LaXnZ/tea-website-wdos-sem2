@@ -21,10 +21,10 @@ btnSubmit = document.getElementById('guestSubmit');
 btnSubmit.addEventListener('click', () => {
     let name = txtFullName.value;
     if (name === ''){
-        txtNameValidation.innerText = 'Please enter full name';
+        txtNameValidation.innerHTML = 'Please enter full name';
     }
     else{
-        txtNameValidation.innerText = '';
+        txtNameValidation.innerHTML = '';
     }
     let phone = txtPhone.value; 
     if (phone.length !== 10){
@@ -35,10 +35,10 @@ btnSubmit.addEventListener('click', () => {
     }
     let email = txtEmail.value;
     let emailCheck = txtEmailCheck.value;
-    if(email === ''){
+    if(email === '' || emailCheck === ''){
         txtEmailValidation.innerText = 'Please enter email';
     }
-    if(email !== emailCheck){
+    else if(email !== emailCheck){
         txtEmailValidation.innerText = 'Emails do not match';
     }
     else{
@@ -127,6 +127,7 @@ minus2.addEventListener('click', () => {
 });
 
 //Foreigner Adult Count
+
 plus3.addEventListener('click', () => {
     foreignerAdultCount++;
     num3.innerHTML = foreignerAdultCount;
@@ -172,6 +173,8 @@ manipulateHTMLwithJS = document.getElementById('manipulateHTML'),
 removeBtn = document.getElementById('remove'),
 manipulateHTMLwithJS2 = document.getElementById('manipulateHTMLTotal'),
 btnAddtoOrder = document.getElementById('addToOrder');
+let bookingData = [];
+let totalOrders = [];
 
 btnAddtoOrder.addEventListener('click',() =>{
     if(duration.value==='threeHours'){
@@ -192,7 +195,6 @@ btnAddtoOrder.addEventListener('click',() =>{
 
         overallTotal = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
         foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
-
     }
 
     if(duration.value==='fullDay'){
@@ -206,7 +208,7 @@ btnAddtoOrder.addEventListener('click',() =>{
 
     }
 
-    manipulateHTMLwithJS.innerHTML += `
+    manipulateHTMLwithJS.innerHTML = `
     <div id="overallCostTickets">
     <h3>Overall cost for tickets
     <p id="overall">
@@ -223,67 +225,129 @@ btnAddtoOrder.addEventListener('click',() =>{
    
     total += overallTotal ;
     
-    console.log(total); 
-    manipulateHTMLwithJS2.innerHTML = `<div id="totalCostTickets">
-    <h3>Total cost for tickets
-    <p id="overall">
-    Total : ${total.toFixed(2)} LKR <br>
-    </p></h3>
-    </div>`;
+    totalOrders.push(overallTotal);
+    console.log(totalOrders);
     
+    bookingData.push({LocalAdults : slAdultCount,LocalChilds:slChildCount,ForeignAdults:foreignerAdultCount,
+        ForeignChilds:foreignerChildCount,Infants:infantCount,Duration:duration.value,Total:overallTotal });
+        
+    displayTableData();
+
     slAdultCount = 0, slChildCount = 0, foreignerAdultCount = 0, foreignerChildCount = 0, infantCount = 0;
     num.innerHTML = 0, num2.innerHTML = 0, num3.innerHTML = 0, num4.innerHTML = 0, num5.innerHTML = 0;
+
+    
    
 });
 
-removeBtn.addEventListener('click',() =>{
-    manipulateHTMLwithJS.innerHTML = " ";
-    
+removeBtn.addEventListener('click',() =>{  //clear all the data
+    slAdultCount = 0, slChildCount = 0, foreignerAdultCount = 0, foreignerChildCount = 0, infantCount = 0;
+    num.innerHTML = 0, num2.innerHTML = 0, num3.innerHTML = 0, num4.innerHTML = 0, num5.innerHTML = 0;
+    total = 0;
+
+    manipulateHTMLwithJS.innerHTML =`<br>`;
+    manipulateHTMLwithJS2.innerHTML =`<br>`;
+    bookingData.splice(0,bookingData.length);
+    displayTableData();
+    // totalOrders=[];
 });
 
-// //Total Price
-// const txtTotal = document.getElementById('total'),
-// btnPlaceOrder = document.getElementById('placeOrder');
+/*Popup message*/
 
-// btnPlaceOrder.addEventListener('click',() =>{
-//     if(duration.value==='threeHours'){
-//         SLAdultPaas = 1200.00;
-//         SLChildPass = 700.00;
-//         foreignerAdultPass = 5500.00;
-//         foreignerChildPass = 2700.00;
+const closePopupBtn = document.getElementById('closePopup'),
+popupDiv = document.getElementById('popup');
 
-//         total = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
-//         foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+closePopupBtn.addEventListener('click',closePopup);
+function closePopup(){
+    popupDiv.classList.remove("open-popup");
+}
 
-//         txtTotal.innerText = `Duration : Three Hours
-//         Total : ${total.toFixed(2)} LKR`;
-//     }
-    
-//     if(duration.value==='halfDay'){
-//         SLAdultPaas = 1200.00 + 350.00;
-//         SLChildPass = 700.00 + 350.00;
-//         foreignerAdultPass = 5500.00 + 450.00;
-//         foreignerChildPass = 2700.00 + 450.00;
 
-//         total = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
-//         foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+//Total Price with Place order button
+const txtTotal = document.getElementById('total'),
+btnPlaceOrder = document.getElementById('placeOrder');
 
-//         txtTotal.innerText = `Duration : Half Day
-//         Total : ${total.toFixed(2)} LKR`;
-//     }
 
-//     if(duration.value==='fullDay'){
-//         SLAdultPaas = 1200.00 + 600.00;
-//         SLChildPass = 700.00 + 600.00;
-//         foreignerAdultPass = 5500.00 + 800.00;
-//         foreignerChildPass = 2700.00 + 800.00;
-    
-//         total = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
-//         foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
 
-//         txtTotal.innerText = `Duration : Full Day
-//         Total : ${total.toFixed(2)} LKR`;
-//     }
+btnPlaceOrder.addEventListener('click',() =>{
+    console.log(totalOrders);
+    let realTotal = 0 ;
+    for (let i = 0; i < totalOrders.length; i++) {
+        realTotal += totalOrders[i];
+    }
+    // console.log(total);
 
-    
-// });
+    manipulateHTMLwithJS2.innerHTML = `<div id="totalCostTickets">
+        <h3>Total cost for tickets
+        <p id="overall">
+        Total : ${realTotal.toFixed(2)} LKR <br>
+        </p></h3>
+        </div>`;
+        
+        manipulateHTMLwithJS.innerHTML =`<br>`;
+        
+        bookingData.splice(0,bookingData.length);
+        displayTableData();
+        popupDiv.classList.add("open-popup");
+
+});
+
+
+
+
+function displayTableData(){
+    let html = "<table border='1|1' class='table'>";
+    setTimeout(() => {
+        html += "<thead>";
+        html += "<tr>";
+        html += "<th>No.</th>";
+        html += "<th>Local Adults</th>";
+        html += "<th>Local Childs</th>";
+        html += "<th>Foreign Adults</th>";
+        html += "<th>Foreign Childs</th>";
+        html += "<th>Infants</th>";
+        html += "<th>Duration</th>";
+        html += "<th>Total</th>";
+        html += "<th>Action</th>";
+        html += "</tr>";
+        html += "</thead>";
+
+        for (let i = 0; i < bookingData.length; i++) {
+            let no = i+1;
+            html += "<tr>";
+            html += "<td>" + no + "</td>";
+            html += "<td>" + bookingData[i].LocalAdults + "</td>";
+            html += "<td>" + bookingData[i].LocalChilds + "</td>";
+            html += "<td>" + bookingData[i].ForeignAdults + "</td>";
+            html += "<td>" + bookingData[i].ForeignChilds + "</td>";
+            html += "<td>" + bookingData[i].Infants + "</td>";
+            html += "<td>" + bookingData[i].Duration + "</td>";
+            html += "<td>" + bookingData[i].Total + "</td>";
+            html += "<td>" + `<button class='bookingDelButton' onclick='removeItem(${i})'>Delete</button>` + "</td>";
+            html += "</tr>";
+        }
+        console.log(bookingData);
+        html += "</table>";
+        document.getElementById("table").innerHTML = html;
+    }, 10);
+};
+displayTableData();
+
+// function removeItem(rec){
+//     console.log(rec);
+//     let filt = bookingData.filter((a,i) => {
+//         if(rec == a.no){
+//         bookingData.splice(i,1);
+//         }
+//     })
+//     displayTableData();
+// }
+
+function removeItem(i){
+    bookingData.splice(i,1);
+    totalOrders.splice(i,1);
+    displayTableData();
+    // console.log(totalOrders);
+}
+
+

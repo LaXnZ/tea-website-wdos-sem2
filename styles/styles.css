@@ -681,7 +681,7 @@ grid-row-gap: 0px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.donoUI input[type=submit] {
+#donateSubmit {
     width: 80px;
     height: 30px;
     color: #000000;
@@ -690,7 +690,7 @@ grid-row-gap: 0px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   }
 
-.donoUI input[type=submit]:hover {
+#donateSubmit:hover {
     color: #ffffff;
     background-color: #1ea500;
   }
@@ -776,27 +776,27 @@ grid-row-gap: 0px;
 .bookingGuests {
     width: 450px;
     align-content: center;
-    border-radius: 20px;
+    border-radius: 15px;
     padding-left: 3%;
     padding-right: 4%;
     margin-left: 4%;
     border:1.5px solid #000000;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
     display: grid;
-    padding-bottom: 5px;
+    padding-top: 15px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr ;
     background-color: #a4ee7c;
 }
 .bookingDates {
     padding-top: 5px;
-    width: 320px;
+    width: 315px;
     height: 30px;
-    margin-left: 2%;
+    margin-left: 31px;
     padding-left: 2%;
     padding-right: 1%;
     align-content: center;
-    border-radius: 20px;
+    border-radius: 15px;
     border:1.5px solid #000000;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
 }
@@ -813,6 +813,7 @@ form h5{
 .bookingGuests section label {
     padding-left: 3%;
 }
+
 .bookingGuests section input {
     margin-right: 5px;
 }
@@ -828,13 +829,13 @@ form h5{
 }
 .choosingTickets{
     display:inline-flex;
-    width: 80%;
+    width: 95%;
     height: auto;
     margin-left: 2%;
     margin-bottom: 20px;
     padding-right: 1%;
     align-content: center;
-    border-radius: 20px;
+    border-radius: 15px;
     border:1.5px solid #000000;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
 }
@@ -861,9 +862,9 @@ form h5{
     background-color: #1ea500;
 }
 .wrapper{
-    margin-top: 10px;
+    margin-top: 15px;
     height:40px;
-    width: 100px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -873,6 +874,8 @@ form h5{
 }
 .wrapper span{
     width: 100%;
+    padding-left: 2px;
+    padding-right: 2px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -930,6 +933,241 @@ form h5{
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
+
+/* Ticket price output table */
+
+.table {
+    border-radius: 20px;
+    width: 95%;
+    margin-left: 10px; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #000000;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    
+  }
+  
+  .table td, .table th {
+    border-radius: 10px;
+    border-width: 2px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
+    border-color: #0c4615;
+    border-style: solid;
+    text-align: center;
+
+  }
+  
+  .table tr td{
+      text-align: center;
+  }
+  .table th {
+      border-width: 2px;
+      border-color: #0c4615;
+      border-style: solid;
+      padding: 1px 8px;
+      
+      text-align: center;
+    }
+  
+  .table thead {
+    background-color: #a4ee7c;
+  }
+  
+  .table tfoot {
+      background-color: #a4ee7c;
+    }
+  
+  .table tfoot tr td{
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  
+  .table thead tr th{
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    .exp-wrapper {
+        position: relative;
+        border: 1px solid #aaa;
+        display: flex;
+        width: 200px;
+        justify-content: space-around;
+        height: 20px;
+        line-height: 20px;
+        font-size: 24px;
+      }
+      
+      .exp-wrapper:after {
+        content: '/';
+        position: absolute;
+        left: 50%;
+        margin-left: -4px;
+        color: #aaa;
+      }
+      
+      input.exp {
+        float: left;
+        font-family: monospace;
+        border: 0;
+        width: 98px;
+        padding-left: 10px;
+        outline: none;
+        appearance: none;
+        font-size: 13px;
+      }
+
+      .bookingDelButton {
+        display: block;
+        margin: 1.5px;
+        border-radius: 10px;
+        color: #000000;
+        background-color: #5b9c38;
+        width: 60px;
+        height: 30px;
+    }
+    .bookingDelButton:hover {
+        color: #ffffff;
+        border-radius: 10px;
+        background-color: #1ea500;
+    }
+
+    #halfBody {
+        background: linear-gradient(to right, rgb(255, 255, 255) 50%, #a4e083de 50%);
+    }
+
+    #left {
+        width: 50%;
+        float:left;
+    }
+    #right {
+        display: block;
+        width: 50%; 
+        float:right;
+    }
+
+    .bookingTopics{
+        font-size: 22px;
+        font-weight:500;
+        margin-left: 50px;
+    }
+
+    .selectDuration{
+        padding-bottom: 20px;
+        width: 315px;
+        height: 30px;
+        margin-left: 31px;
+        padding-left: 2%;
+        padding-right: 1%;
+       
+        border-radius: 15px;
+        border:1.5px solid #000000;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+}
+/* Popup message */
+
+.popup{
+    width: 400px;
+    background: rgb(197, 204, 187);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0px 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup p{
+    text-align: center;
+}
+.popup img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}  
+.popup h2{
+    margin: 30px 0px 10px;
+    font-size: 38px;
+    font-weight: 500;
+}
+.popup button{
+    width: 80%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color:#fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popupDonate{
+    width: 400px;
+    background: rgb(125, 136, 110);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0px 30px 30px;
+    color: rgb(117, 64, 64);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popupDonate p{
+    text-align: center;
+}
+.popupDonate img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}  
+.popupDonate h2{
+    margin: 30px 0px 10px;
+    font-size: 38px;
+    font-weight: 500;
+}
+#closePopup{
+    width: 80%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color:rgb(0, 0, 0);
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
 /* Mobile -- Homepage */
 
 @media only screen and (max-width : 1024px) {
@@ -986,18 +1224,17 @@ form h5{
     
         .box3 {
             margin-top: 2%;
-           margin-bottom: 2%;
+            margin-bottom: 2%;
             margin-left: 10%;
-           margin-right: auto;
+            margin-right: auto;
             border-radius: 20px;
             width: 80%;
             height: 80%;
             box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
         }
-        .bookingButton {
-            
+        .delButton {
+            border-radius: 20px;
             margin: 15px;
-            
             width: 300px;
             height: 30px;
         }
@@ -1254,11 +1491,8 @@ form h5{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr ;
     }
-    .bookingButton {
-        margin:5px;
-        width: 180px;
-        height: 30px;
-    }
+
+    
     
 }
 

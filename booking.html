@@ -18,178 +18,170 @@
         <link rel="stylesheet" href="styles/styles.css">
     </head>
 
-    <body>
+    <body id="halfBody">
         <div id="myPage">
-          <div class="grid-container1">
-            <header><a href="index.html"><img class="logo" src="images/logo.png"></a></header>
+            <div class="grid-container1">
+                <header>
+                    <a href="index.html"><img class="logo" src="images/logo.png"></a>
+                </header>
 
-            <nav id="mainNav" class="primary-navigation">
-              <ul class="right">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="plantation.html">Tea Plantation</a></li>
-                <li><a href="museum.html">Ceylon Tea Museum</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a>Stores &dtrif;
-                  <ul class="dropdown">
-                    <li><a href="zesta.html">Zesta Ceylon Tea</a></li>
-                    <li><a href="senok.html">Senok Tea</a></li>
-                  </ul>
-                </li>
-                <li><a href="donate.html">Donations</a></li>
-              </ul>
-            </nav>
-          </div>
+                <nav id="mainNav" class="primary-navigation">
+                    <ul class="right">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="plantation.html">Tea Plantation</a>
+                        </li>
+                        <li>
+                            <a href="museum.html">Ceylon Tea Museum</a>
+                        </li>
+                        <li>
+                            <a href="products.html">Products</a>
+                        </li>
+                        <li>
+                            <a>Stores &dtrif;
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="zesta.html">Zesta Ceylon Tea</a>
+                                    </li>
+                                    <li>
+                                        <a href="senok.html">Senok Tea</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </li>
+                        <li>
+                            <a href="donate.html">Donations</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 
-          <div id="left" style="width: 70%; float:left">
-          <h1>Select the date below :</h1>
-          <div class="bookingDates">
-            <label for="start">When are you coming : </label>
-            <input type="date" id="selectedDate" name="trip-start"
-                    value="2022-01-01">
-          </div>
-          
-          <h1>Fill your details below :</h1>
-          <div>
-            <form>
-              <fieldset class="bookingGuests">
-                <legend>Guests</legend>
-                <section>
+            <div class="popup" id="popup">
+                <img src="images/404-tick.png">
+                <h2>Thank you for your booking!</h2>
+                <p>Your details has been submitted successfully.</p>
+                <button type="button" id="closePopup">Ok</button>
+            </div>
 
-                <label class="labelFont" for="fname">  Full Name  </label> <br>
-                <input type="text" id="fname" name="fname" required><br>
-                <h5 id="nameValidation"></h5>
-                
-                <label for="mNumber">  Mobile Number  </label><br>
-                <input type="number" id="mNumber" name="mNumber" min="0" maxlength="10" required><br>
-                <h5 id="numValidation"></h5>
-                </section>
+            <div id="left" >
+                <h1 class="bookingTopics">Select the date below :</h1>
+                <div class="bookingDates">
+                    <label for="start">When are you coming :
+                    </label>
+                    <input type="date" id="selectedDate" name="trip-start" value="2022-01-01">
+                </div>
 
-                <section>
-                <label for="email">  Email  </label><br>
-                <input type="email" id="email" name="email" required><br>
-                <br>
-                <label for="email"> Confirm Email  </label><br>
-                <input type="email" id="checkEmail" name="email" required><br>
-                <h5 id="emailValidation"></h5>
-                <label for="cars">Gender</label>
+                <h1 class="bookingTopics">Fill your details below :</h1>
+                <div>
+                    <form>
+                        <fieldset class="bookingGuests">
+                            <section>
 
-                    <select name="gender" id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                                <label class="labelFont" for="fname">
+                                    Full Name
+                                </label>
+                                <br>
+                                <input type="text" id="fname" name="fname" required><br>
+                                <h5 id="nameValidation">.</h5>
+
+                                <label for="mNumber">
+                                    Mobile Number
+                                </label><br>
+                                <input type="tel" id="mNumber" name="mNumber" min="0" maxlength="10" required><br>
+                                <h5 id="numValidation">.</h5>
+                            </section>
+
+                            <section>
+                                <label for="email">
+                                    Email
+                                </label><br>
+                                <input type="email" id="email" name="email" required><br>
+                                <br>
+                                <label for="email">
+                                    Confirm Email
+                                </label><br>
+                                <input type="email" id="checkEmail" name="email" required><br>
+                                <h5 id="emailValidation">.</h5>
+                                <label for="cars">Gender</label>
+
+                                <select name="gender" id="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+
+                            </section>
+                            <input id="guestSubmit" class="bookingButton" type="button" value="Submit">
+                        </fieldset>
+                    </form>
+                </div>
+                <h1 class="bookingTopics">Choose your tickets :</h1>
+                <div class="choosingTickets">
+
+                    <p>SL Adult
+                    </p>
+                    <div class="wrapper">
+                        <span class="minus1">-</span>
+                        <span class="num1">0</span>
+                        <span class="plus1">+</span>
+                    </div>
+
+                    <p>SL Child
+                    </p>
+                    <div class="wrapper">
+                        <span class="minus2">-</span>
+                        <span class="num2">0</span>
+                        <span class="plus2">+</span>
+                    </div>
+
+                    <p>Foreigner Adult</p>
+                    <div class="wrapper">
+                        <span class="minus3">-</span>
+                        <span class="num3">0</span>
+                        <span class="plus3">+</span>
+                    </div>
+
+                    <p>Foreigner Child</p>
+                    <div class="wrapper">
+                        <span class="minus4">-</span>
+                        <span class="num4">0</span>
+                        <span class="plus4">+</span>
+                    </div>
+
+                    <p>Infant</p>
+                    <div class="wrapper">
+                        <span class="minus5">-</span>
+                        <span class="num5">0</span>
+                        <span class="plus5">+</span>
+                    </div>
+                </div>
+                <div class="selectDuration">
+                    <label for="start">Select duration here :
+                    </label>
+                    <select name="duration" id="duration">
+                        <option value="threeHours" selected>3 hours</option>
+                        <option value="halfDay">Half day</option>
+                        <option value="fullDay">Full day</option>
                     </select>
-                    
-                </section>
-                <input id="guestSubmit" class="bookingButton" type="button" value="Submit">
-              </fieldset>
-            </form> 
-          </div>
-          <h1>Choose your tickets :</h1>
-        <div class="choosingTickets">  
-          
-            <p>SL Adult  </p>
-          <div class="wrapper">
-            <span class="minus1">-</span><span class="num1">0</span><span class="plus1">+</span>
-          </div>
+                </div>
+                <input class="button" type="button" id="addToOrder" value="Add to orders">
+                <input class="button" type="button" id="remove" value="Clear orders">
 
-          <p>SL Child  </p> 
-          <div class="wrapper">
-            <span class="minus2">-</span><span class="num2">0</span><span class="plus2">+</span>
-          </div>
 
-          <p>Foreigner Adult</p> 
-          <div class="wrapper">
-            <span class="minus3">-</span><span class="num3">0</span><span class="plus3">+</span>
-          </div>
+                <input class="button" type="submit" id="placeOrder" value="Place order">
+            </div>
 
-          <p>Foreigner Child</p> 
-          <div class="wrapper">
-            <span class="minus4">-</span><span class="num4">0</span><span class="plus4">+</span>
-          </div>
+            <div id="right" >
+                <p id="table"></p>
+                <div id="manipulateHTML"></div>
 
-          <p>Infant</p> 
-          <div class="wrapper">
-            <span class="minus5">-</span><span class="num5">0</span><span class="plus5">+</span>
-          </div>
-        </div>
-        <h1> Duration : </h1>
-        <select name="duration" id="duration">
-          <option value="threeHours" selected>3 hours</option>
-          <option value="halfDay">Half day</option>
-          <option value="fullDay">Full day</option>
-        </select>
-        
-        <input class = "button" type="button" id="addToOrder" value ="Add to orders">
-        <input class = "button" type="button" id="remove" value ="Clear orders">
-        
+                <div id="manipulateHTMLTotal"></div>
 
-        <input class = "button" type="button" id="placeOrder" value ="Place order">
-      </div>
-      
-      <div style="width: 30%; float:right">
-        <div id="manipulateHTML">
-          
-        </div>
-        
-        <div id="manipulateHTMLTotal">
-          
+            </div>
         </div>
        
-      </div>
-          <input class = "button" type="button" name="addToFavourite" value ="Add to Favourite">
-          <input class = "button" type="button" name="orderFavourite" value ="Order Favourite">
-          <input class = "button" type="button" name="checkLoyalty" value ="Check Loyalty">
-        
 
-        <footer class="siteFooter">
-          <div class="grid-containerFooter">
-              <div class="footerHeading">
-                <h6>About</h6>
-                <p id = "text">“The Sri Lanka Tea Board, on behalf of the growers, manufactures and exporters of ‘Ceylon Tea’, 
-                  which is a product of Sri Lanka and no other origin, claims and defends ownership of, and all intellectual property rights 
-                  and other trade related rights to the name / trademark / geographical indication “Ceylon Tea” when used without authorization for 
-                  tea and any product associated with tea, whether originating from species of Camellia sinensis or any source and any other goods or services.”</p>
-              </div>
-    
-              <div class="footerHeading">
-                <h6>Quick Links</h6>
-                <Section id= "linkList">
-                  <a href="index.html">Home</a> <br>
-                  <a href="plantation.html">Tea Plantation</a> <br>
-                  <a href="museum.html">Ceylon Tea Museum</a> <br>
-                  <a href="products.html">Products</a> <br>
-                  <a href="zesta.html">Zesta Ceylon Tea</a> <br>
-                  <a href="senok.html">Senok Tea</a> <br>
-                  <a href="donate.html">Donations</a>  <br>
-                  
-                </Section>
-                  
-              </div>
-          </div> 
-            <hr>
-          
-          
-              <div >
-                <p class="copyrightText">Copyright &copy; 2022 All Rights Reserved by 
-             <a href="http://www.srilankateaboard.lk">Ceylon Tea Board</a>.
-                </p>
-                <div class = "flexSocial">
-                <a id = "social" target="_blank" href="https://www.instagram.com/slteaboard/">
-                  <img src="images/insta.png">
-                 </a>
-                 <a id = "social" target="_blank" href="https://www.facebook.com/srilankateaboard/">
-                  <img src="images/facebook.png">
-                 </a>
-                 <a id = "social"  href="mailto:sltbhelp@pureceylontea.com">
-                  <img src="images/email.png">
-                 </a>
-                </div>
-              </div>
-            
-    
-
-
-        </footer>
         <script src="scripts/mainBooking.js"></script>
-    </body>
-
+      </body>
 </html>

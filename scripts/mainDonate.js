@@ -2,6 +2,7 @@
 const submitDonate = document.getElementById('donateSubmit');
 
 submitDonate.addEventListener('click', () => { 
+
     if (document.getElementById('amount').value === '') {
         alert('Please enter a valid amount');
     }
@@ -14,17 +15,30 @@ submitDonate.addEventListener('click', () => {
     else if (document.getElementById('cNumber').value === '') {
         alert('Card number is required');
     }
+    else if (document.getElementById('cNumber').value === '') {
+      alert('Invalid card number');
+  }
     else if (document.getElementById('nameOnCard').value === '') {
         alert('Card holder name is required');
     }
-    else if (document.getElementById('eDate').value === '') {
-        alert('Expiry date is required');
+    else if (document.getElementById('month').value === '') {
+        alert('Expiry date (month) is required');
+    }
+    else if (document.getElementById('year').value === '') {
+        alert('Expiry date (year) is required');
     }
     else if (document.getElementById('cvv').value === '') {
         alert('CVV is required');
     }
-    else {
-        alert('Thank you for your donation!');
-    }
+    popupDiv.classList.add("open-popup");
+    
 });
 
+/*Popup message*/
+closePopupBtn = document.getElementById('closePopup'),
+popupDiv = document.getElementById('popup');
+
+closePopupBtn.addEventListener('click',closePopup);
+function closePopup(){
+    popupDiv.classList.remove("open-popup");
+}
