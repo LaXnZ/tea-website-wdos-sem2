@@ -12,41 +12,13 @@ const txtFullName = document.getElementById('fname'),
 txtEmail = document.getElementById('email'),
 txtEmailCheck = document.getElementById('checkEmail'),
 txtPhone = document.getElementById('mNumber'),
-txtGender = document.getElementById('gender')
+txtGender = document.getElementById('gender'),
+txtDate = document.getElementById('selectedDate'),
 txtNameValidation = document.getElementById('nameValidation');
 txtPhoneValidation = document.getElementById('numValidation');
 txtEmailValidation = document.getElementById('emailValidation');
-btnSubmit = document.getElementById('guestSubmit');
+txtForm = document.getElementById('guestForm');
 
-btnSubmit.addEventListener('click', () => {
-    let name = txtFullName.value;
-    if (name === ''){
-        txtNameValidation.innerHTML = 'Please enter full name';
-    }
-    else{
-        txtNameValidation.innerHTML = '';
-    }
-    let phone = txtPhone.value; 
-    if (phone.length !== 10){
-        txtPhoneValidation.innerText = 'Please enter a valid phone number';
-    }
-    else{
-        txtPhoneValidation.innerText = '';
-    }
-    let email = txtEmail.value;
-    let emailCheck = txtEmailCheck.value;
-    if(email === '' || emailCheck === ''){
-        txtEmailValidation.innerText = 'Please enter email';
-    }
-    else if(email !== emailCheck){
-        txtEmailValidation.innerText = 'Emails do not match';
-    }
-    else{
-        txtEmailValidation.innerText = '';
-    }
-    let gender = txtGender.value;
-    //Where should we display the guest details?
-});
 
 // Ticket Count Increase and Decrease
 
@@ -80,9 +52,9 @@ let SLChildPass ;
 let foreignerAdultPass ;
 let foreignerChildPass ;
 let infantPass ;
-let headCount ;
 let total ;
 let overallTotal;
+let loyaltyPoints ;
 
 window.addEventListener('load', () => {
     slChildCount = 0;
@@ -91,13 +63,15 @@ window.addEventListener('load', () => {
     foreignerChildCount = 0;
     infantCount = 0;
     overallTotal = 0;
+    loyaltyPoints = 0;
     SLAdultPaas = 1200.00;
     SLChildPass = 700.00;
     foreignerAdultPass = 5500.00;
     foreignerChildPass = 2700.00;
-    headCount = slAdultCount + slChildCount + foreignerAdultCount + foreignerChildCount + infantCount;
+    date = new Date().toLocaleDateString();
     total = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
     foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+ 
 });
 
 //SL Parent Count
@@ -175,9 +149,11 @@ manipulateHTMLwithJS2 = document.getElementById('manipulateHTMLTotal'),
 btnAddtoOrder = document.getElementById('addToOrder');
 let bookingData = [];
 let totalOrders = [];
+let headCountArray = [];
+let favourites = [];
 
 btnAddtoOrder.addEventListener('click',() =>{
-    if(duration.value==='threeHours'){
+    if(duration.value==='3 Hours'){
         SLAdultPaas = 1200.00;
         SLChildPass = 700.00;
         foreignerAdultPass = 5500.00;
@@ -187,7 +163,7 @@ btnAddtoOrder.addEventListener('click',() =>{
         foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
     }
     
-    if(duration.value==='halfDay'){
+    if(duration.value==='12 Hours'){
         SLAdultPaas = 1200.00 + 350.00;
         SLChildPass = 700.00 + 350.00;
         foreignerAdultPass = 5500.00 + 450.00;
@@ -197,7 +173,7 @@ btnAddtoOrder.addEventListener('click',() =>{
         foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
     }
 
-    if(duration.value==='fullDay'){
+    if(duration.value==='24 Hours'){
         SLAdultPaas = 1200.00 + 600.00;
         SLChildPass = 700.00 + 600.00;
         foreignerAdultPass = 5500.00 + 800.00;
@@ -210,7 +186,7 @@ btnAddtoOrder.addEventListener('click',() =>{
 
     manipulateHTMLwithJS.innerHTML = `
     <div id="overallCostTickets">
-    <h3>Overall cost for tickets
+    <h3>Your Last Order Details
     <p id="overall">
     SL Adult : ${slAdultCount} <br>
     SL Child : ${slChildCount} <br>
@@ -224,7 +200,10 @@ btnAddtoOrder.addEventListener('click',() =>{
     </div>`;
    
     total += overallTotal ;
-    
+    headCount = slAdultCount + slChildCount + foreignerAdultCount + foreignerChildCount + infantCount;
+    headCountArray.push(headCount);
+    console.log(headCountArray);
+
     totalOrders.push(overallTotal);
     console.log(totalOrders);
     
@@ -235,9 +214,8 @@ btnAddtoOrder.addEventListener('click',() =>{
 
     slAdultCount = 0, slChildCount = 0, foreignerAdultCount = 0, foreignerChildCount = 0, infantCount = 0;
     num.innerHTML = 0, num2.innerHTML = 0, num3.innerHTML = 0, num4.innerHTML = 0, num5.innerHTML = 0;
-
-    
    
+    
 });
 
 removeBtn.addEventListener('click',() =>{  //clear all the data
@@ -252,7 +230,7 @@ removeBtn.addEventListener('click',() =>{  //clear all the data
     // totalOrders=[];
 });
 
-/*Popup message*/
+//Popup message
 
 const closePopupBtn = document.getElementById('closePopup'),
 popupDiv = document.getElementById('popup');
@@ -262,34 +240,142 @@ function closePopup(){
     popupDiv.classList.remove("open-popup");
 }
 
+// Add to Favouites
+const addToFavBtn = document.getElementById('addToFav');
+addToFavBtn.addEventListener('click',() =>{
+    if(duration.value==='3 Hours'){
+        SLAdultPaas = 1200.00;
+        SLChildPass = 700.00;
+        foreignerAdultPass = 5500.00;
+        foreignerChildPass = 2700.00;
+
+        overallTotal = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
+        foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+    }
+    
+    if(duration.value==='12 Hours'){
+        SLAdultPaas = 1200.00 + 350.00;
+        SLChildPass = 700.00 + 350.00;
+        foreignerAdultPass = 5500.00 + 450.00;
+        foreignerChildPass = 2700.00 + 450.00;
+
+        overallTotal = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
+        foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+    }
+
+    if(duration.value==='24 Hours'){
+        SLAdultPaas = 1200.00 + 600.00;
+        SLChildPass = 700.00 + 600.00;
+        foreignerAdultPass = 5500.00 + 800.00;
+        foreignerChildPass = 2700.00 + 800.00;
+    
+        overallTotal = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
+        foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+
+    }
+
+    favourites.push({LocalAdults : slAdultCount,LocalChilds:slChildCount,ForeignAdults:foreignerAdultCount,
+    ForeignChilds:foreignerChildCount,Infants:infantCount,Duration:duration.value,Total:overallTotal });
+
+    let favJSON = JSON.stringify(favourites[favourites.length-1]);
+    console.log(favJSON + ": Added to Favourites");
+   
+    localStorage.setItem('favourite',favJSON);
+    slAdultCount = 0, slChildCount = 0, foreignerAdultCount = 0, foreignerChildCount = 0, infantCount = 0;
+    num.innerHTML = 0, num2.innerHTML = 0, num3.innerHTML = 0, num4.innerHTML = 0, num5.innerHTML = 0;
+    total = 0;
+
+});
+// Order Favouites
+const orderFavBtn = document.getElementById('orderFav');
+orderFavBtn.addEventListener('click',() =>{
+    let JSONFav = localStorage.getItem('favourite');
+    let JSFav = JSON.parse(JSONFav);
+    console.log(JSFav);
+    bookingData.push(JSFav);
+    displayTableData(JSFav);
+
+});
 
 //Total Price with Place order button
 const txtTotal = document.getElementById('total'),
 btnPlaceOrder = document.getElementById('placeOrder');
 
 
-
+// place order button with message + form validation
 btnPlaceOrder.addEventListener('click',() =>{
+    let JSONFav = localStorage.getItem('favourite');
+    let JSFav = JSON.parse(JSONFav);
+
     console.log(totalOrders);
+
     let realTotal = 0 ;
     for (let i = 0; i < totalOrders.length; i++) {
         realTotal += totalOrders[i];
     }
+    
+    realTotal += JSFav.Total;
+
+    let realHeadCount = 0 ;
+    for (let i = 0; i < headCountArray.length; i++) {
+        realHeadCount += headCountArray[i];
+    }
+    realHeadCount += JSFav.LocalAdults + JSFav.LocalChilds + JSFav.ForeignAdults + JSFav.ForeignChilds + JSFav.Infants;
+
     // console.log(total);
 
-    manipulateHTMLwithJS2.innerHTML = `<div id="totalCostTickets">
-        <h3>Total cost for tickets
-        <p id="overall">
-        Total : ${realTotal.toFixed(2)} LKR <br>
-        </p></h3>
-        </div>`;
-        
-        manipulateHTMLwithJS.innerHTML =`<br>`;
-        
-        bookingData.splice(0,bookingData.length);
-        displayTableData();
-        popupDiv.classList.add("open-popup");
+        let name = txtFullName.value;
+        if (name === ''){
+            txtNameValidation.innerHTML = 'Please enter full name';
+        }
+        else{
+            txtNameValidation.innerHTML = '';
+        }
+        let phone = txtPhone.value; 
+        if (phone.length !== 10){
+            txtPhoneValidation.innerText = 'Please enter a valid phone number';
+        }
+        else{
+            txtPhoneValidation.innerText = '';
+        }
+        let email = txtEmail.value;
+        let emailCheck = txtEmailCheck.value;
+        if(email === '' || emailCheck === ''){
+            txtEmailValidation.innerText = 'Please enter email';
+        }
+        else if(email !== emailCheck){
+            txtEmailValidation.innerText = 'Emails do not match';
+        }
+        else{
+            txtEmailValidation.innerText = '';
+        }
+        if (name!=='' && phone.length === 10 && email !== '' && emailCheck !== '' && email === emailCheck) {
+            bookingData.splice(0,bookingData.length);
+            displayTableData();
 
+            manipulateHTMLwithJS2.innerHTML = `<div id="totalCostTickets">
+            <h3>Your e-bill for tickets
+            <p id="overall">
+            Name : ${name} <br>
+            Gender : ${txtGender.value} <br>
+            Phone : ${phone} <br>
+            Email : ${email} <br>
+            Booked Date : ${txtDate.value} <br>
+            ----------------------------------------<br>
+            Total : ${realTotal.toFixed(2)} LKR <br>
+            For ${realHeadCount} people
+            </p></h3>
+            <h5 id="emailValidation">Copy of this e-bill 
+            sended to your e-mail.</h5>
+            </div>`;
+
+
+            manipulateHTMLwithJS.innerHTML =`<br>`;
+            popupDiv.classList.add("open-popup");
+            txtForm.reset();
+    }
+        let gender = txtGender.value;
+    //Where should we display the guest details?
 });
 
 
@@ -345,9 +431,45 @@ displayTableData();
 
 function removeItem(i){
     bookingData.splice(i,1);
+    headCountArray.splice(i,1);
     totalOrders.splice(i,1);
     displayTableData();
     // console.log(totalOrders);
 }
 
+// function addToFav(i){
+//     let fav = JSON.stringify(bookingData[i]);
+//     localStorage.setItem('favourite',fav);
+// }
 
+
+// Loyalty points
+
+const loyaltyButton = document.getElementById('checkLoyalty'),
+txtLoyaltyPoint = document.getElementById('loyaltyPointOut');
+
+loyaltyButton.addEventListener('click',() =>{
+    let JSONFav = localStorage.getItem('favourite');
+    let JSFav = JSON.parse(JSONFav);
+    
+    let realHeadCount = 0 ;
+    for (let i = 0; i < headCountArray.length; i++) {
+        realHeadCount += headCountArray[i];
+    }
+    realHeadCount += JSFav.LocalAdults + JSFav.LocalChilds + JSFav.ForeignAdults + JSFav.ForeignChilds + JSFav.Infants;
+
+    if (realHeadCount > 3){
+        loyaltyPoints = realHeadCount * 15;
+    }
+
+    localStorage.setItem('loyaltyPoints',loyaltyPoints);
+
+    txtLoyaltyPoint.innerHTML = `<div id="loyaltyPoints">
+    <h3>-Loyalty Points-
+    <p id="overall">
+    You have ${loyaltyPoints} loyalty points
+    </p></h3>
+    <h5 id="emailValidation">You can redeem loyalty points
+    from the finance.</h5>
+    </div>`;
+});

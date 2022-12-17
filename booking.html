@@ -75,7 +75,7 @@
 
                 <h1 class="bookingTopics">Fill your details below :</h1>
                 <div>
-                    <form>
+                    <form id="guestForm">
                         <fieldset class="bookingGuests">
                             <section>
 
@@ -89,7 +89,7 @@
                                 <label for="mNumber">
                                     Mobile Number
                                 </label><br>
-                                <input type="tel" id="mNumber" name="mNumber" min="0" maxlength="10" required><br>
+                                <input type="tel" id="mNumber" name="mNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
                                 <h5 id="numValidation">.</h5>
                             </section>
 
@@ -98,7 +98,7 @@
                                     Email
                                 </label><br>
                                 <input type="email" id="email" name="email" required><br>
-                                <br>
+                                <h5 id="emailValidation">.</h5>
                                 <label for="email">
                                     Confirm Email
                                 </label><br>
@@ -107,12 +107,12 @@
                                 <label for="cars">Gender</label>
 
                                 <select name="gender" id="gender">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
 
                             </section>
-                            <input id="guestSubmit" class="bookingButton" type="button" value="Submit">
+                            
                         </fieldset>
                     </form>
                 </div>
@@ -160,16 +160,28 @@
                     <label for="start">Select duration here :
                     </label>
                     <select name="duration" id="duration">
-                        <option value="threeHours" selected>3 hours</option>
-                        <option value="halfDay">Half day</option>
-                        <option value="fullDay">Full day</option>
+                        <option value="3 Hours" selected>3 hours</option>
+                        <option value="12 Hours">Half day</option>
+                        <option value="24 Hours">Full day</option>
                     </select>
                 </div>
-                <input class="button" type="button" id="addToOrder" value="Add to orders">
-                <input class="button" type="button" id="remove" value="Clear orders">
+                
+                
+                <div id="right">
+                <input class="button" type="button" id="addToFav" value="Add to Favourite">
+                <input class="button" type="button" id="orderFav" value="Order Favourite">
+                </div>
+                <input class="button" type="button" id="addToOrder" value="Add to Orders">
+                <input class="button" type="button" id="remove" value="Clear Orders">
+                <input class="button" type="submit" id="placeOrder" value="Place Order">
 
+                <div id="loyalty">
+                    <div id="loyaltyPointOut"> 
+                        
+                    </div>
+                    <input class="button" type="button" id="checkLoyalty" value="Check Loyalty">
+                </div>
 
-                <input class="button" type="submit" id="placeOrder" value="Place order">
             </div>
 
             <div id="right" >
