@@ -140,6 +140,51 @@ minus5.addEventListener('click', () => {
     }
 });
 
+//Dynamically changing calculation
+let incDec = document.querySelectorAll('span');
+
+const txtDynamicTotal = document.getElementById('dynamicTotalOut');
+// console.log(incDec);
+for (i of incDec){
+
+    i.addEventListener('click', () => {
+        if(duration.value==='3 Hours'){
+            SLAdultPaas = 1200.00;
+            SLChildPass = 700.00;
+            foreignerAdultPass = 5500.00;
+            foreignerChildPass = 2700.00;
+    
+            overallTotal = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
+            foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+        }
+        
+        if(duration.value==='12 Hours'){
+            SLAdultPaas = 1200.00 + 350.00;
+            SLChildPass = 700.00 + 350.00;
+            foreignerAdultPass = 5500.00 + 450.00;
+            foreignerChildPass = 2700.00 + 450.00;
+    
+            overallTotal = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
+            foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+        }
+    
+        if(duration.value==='24 Hours'){
+            SLAdultPaas = 1200.00 + 600.00;
+            SLChildPass = 700.00 + 600.00;
+            foreignerAdultPass = 5500.00 + 800.00;
+            foreignerChildPass = 2700.00 + 800.00;
+        
+            overallTotal = slAdultCount*SLAdultPaas + slChildCount*SLChildPass + 
+            foreignerAdultCount*foreignerAdultPass + foreignerChildCount*foreignerChildPass;
+    
+        }
+        total = overallTotal;
+        console.log(total);
+        txtDynamicTotal.innerHTML = `Total is ${total.toFixed(2)} LKR
+        for ${duration.value}`;
+    });
+}
+
 //Overall Price
 const txtOverall = document.getElementById('overall'),
 duration = document.getElementById('duration'),
@@ -212,6 +257,7 @@ btnAddtoOrder.addEventListener('click',() =>{
         
     displayTableData();
 
+    txtDynamicTotal.innerHTML = ` `;
     slAdultCount = 0, slChildCount = 0, foreignerAdultCount = 0, foreignerChildCount = 0, infantCount = 0;
     num.innerHTML = 0, num2.innerHTML = 0, num3.innerHTML = 0, num4.innerHTML = 0, num5.innerHTML = 0;
    
@@ -227,6 +273,7 @@ removeBtn.addEventListener('click',() =>{  //clear all the data
     manipulateHTMLwithJS2.innerHTML =`<br>`;
     bookingData.splice(0,bookingData.length);
     displayTableData();
+    txtDynamicTotal.innerHTML = ` `;
     // totalOrders=[];
 });
 
@@ -284,6 +331,7 @@ addToFavBtn.addEventListener('click',() =>{
     slAdultCount = 0, slChildCount = 0, foreignerAdultCount = 0, foreignerChildCount = 0, infantCount = 0;
     num.innerHTML = 0, num2.innerHTML = 0, num3.innerHTML = 0, num4.innerHTML = 0, num5.innerHTML = 0;
     total = 0;
+    txtDynamicTotal.innerHTML = ` `;
 
 });
 // Order Favouites
@@ -373,9 +421,8 @@ btnPlaceOrder.addEventListener('click',() =>{
             manipulateHTMLwithJS.innerHTML =`<br>`;
             popupDiv.classList.add("open-popup");
             txtForm.reset();
+            txtDynamicTotal.innerHTML = ` `;
     }
-        let gender = txtGender.value;
-    //Where should we display the guest details?
 });
 
 

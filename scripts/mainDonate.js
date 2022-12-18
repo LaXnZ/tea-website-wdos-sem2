@@ -1,36 +1,29 @@
 // Donate page
-const submitDonate = document.getElementById('donateSubmit');
+const submitDonate = document.getElementById('donateSubmit'),
+    amount = document.getElementById('amount'),
+    fName = document.getElementById('fName'),
+    address = document.getElementById('address'),
+    cNumber = document.getElementById('cNumber'),
+    nameOnCard = document.getElementById('nameOnCard'),
+    month = document.getElementById('month'),
+    year = document.getElementById('year'),
+    cvv = document.getElementById('cvv')
+    formDonation = document.getElementById('donoUI');
 
 submitDonate.addEventListener('click', () => { 
 
-    if (document.getElementById('amount').value === '') {
-        alert('Please enter a valid amount');
+    if(amount.value == "" || fName.value == "" || address.value == "" || cNumber.value == "" || nameOnCard.value == "" || month.value == "" || year.value == "" || cvv.value == ""){
+        alert("Please fill all the fields");
+    }else{
+        popupDiv.classList.add("open-popup");
+        fName.value = "";
+        address.value = "";
+        cNumber.value = "";
+        nameOnCard.value = "";
+        month.value = "01";
+        year.value = "22";
+        cvv.value = "";
     }
-    else if (document.getElementById('fName').value === '') {
-        alert('Name is required');
-    }
-    else if (document.getElementById('address').value === '') {
-        alert('Address is required');
-    }
-    else if (document.getElementById('cNumber').value === '') {
-        alert('Card number is required');
-    }
-    else if (document.getElementById('cNumber').value === '') {
-      alert('Invalid card number');
-  }
-    else if (document.getElementById('nameOnCard').value === '') {
-        alert('Card holder name is required');
-    }
-    else if (document.getElementById('month').value === '') {
-        alert('Expiry date (month) is required');
-    }
-    else if (document.getElementById('year').value === '') {
-        alert('Expiry date (year) is required');
-    }
-    else if (document.getElementById('cvv').value === '') {
-        alert('CVV is required');
-    }
-    popupDiv.classList.add("open-popup");
     
 });
 

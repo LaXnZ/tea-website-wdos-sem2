@@ -122,38 +122,38 @@
                     <p>SL Adult
                     </p>
                     <div class="wrapper">
-                        <span class="minus1">-</span>
+                        <span class="minus1" class="incDec">-</span>
                         <span class="num1">0</span>
-                        <span class="plus1">+</span>
+                        <span class="plus1" class="incDec">+</span>
                     </div>
 
                     <p>SL Child
                     </p>
                     <div class="wrapper">
-                        <span class="minus2">-</span>
-                        <span class="num2">0</span>
-                        <span class="plus2">+</span>
+                        <span class="minus2" class="incDec">-</span>
+                        <span class="num2" >0</span>
+                        <span class="plus2" class="incDec">+</span>
                     </div>
 
                     <p>Foreigner Adult</p>
                     <div class="wrapper">
-                        <span class="minus3">-</span>
-                        <span class="num3">0</span>
-                        <span class="plus3">+</span>
+                        <span class="minus3" class="incDec">-</span>
+                        <span class="num3" >0</span>
+                        <span class="plus3" class="incDec">+</span>
                     </div>
 
                     <p>Foreigner Child</p>
                     <div class="wrapper">
-                        <span class="minus4">-</span>
-                        <span class="num4">0</span>
-                        <span class="plus4">+</span>
+                        <span class="minus4" class="incDec">-</span>
+                        <span class="num4" >0</span>
+                        <span class="plus4" class="incDec">+</span>
                     </div>
 
                     <p>Infant</p>
                     <div class="wrapper">
-                        <span class="minus5">-</span>
-                        <span class="num5">0</span>
-                        <span class="plus5">+</span>
+                        <span class="minus5" class="incDec">-</span>
+                        <span class="num5" >0</span>
+                        <span class="plus5" class="incDec">+</span>
                     </div>
                 </div>
                 <div class="selectDuration">
@@ -165,22 +165,28 @@
                         <option value="24 Hours">Full day</option>
                     </select>
                 </div>
+
+                <div class="dynamicTotal">
+                    <h1 id="dynamicTotalOut">Your total will display here</h1>
+                </div>
                 
                 
                 <div id="right">
                 <input class="button" type="button" id="addToFav" value="Add to Favourite">
                 <input class="button" type="button" id="orderFav" value="Order Favourite">
+                <div id="loyalty">
+                    
+                    <input class="button" type="button" id="checkLoyalty" value="Check Loyalty">
+                </div>
                 </div>
                 <input class="button" type="button" id="addToOrder" value="Add to Orders">
                 <input class="button" type="button" id="remove" value="Clear Orders">
                 <input class="button" type="submit" id="placeOrder" value="Place Order">
-
-                <div id="loyalty">
-                    <div id="loyaltyPointOut"> 
+                
+                <div id="loyaltyPointOut"> 
                         
-                    </div>
-                    <input class="button" type="button" id="checkLoyalty" value="Check Loyalty">
                 </div>
+                
 
             </div>
 
