@@ -358,17 +358,21 @@ btnPlaceOrder.addEventListener('click',() =>{
     console.log(totalOrders);
 
     let realTotal = 0 ;
+    let realHeadCount = 0 ;
+    
     for (let i = 0; i < totalOrders.length; i++) {
         realTotal += totalOrders[i];
     }
+    if(JSFav !== null){
+        realTotal += JSFav.Total;
+        realHeadCount += JSFav.LocalAdults + JSFav.LocalChilds + JSFav.ForeignAdults + JSFav.ForeignChilds + JSFav.Infants;
+    }
     
-    realTotal += JSFav.Total;
-
-    let realHeadCount = 0 ;
     for (let i = 0; i < headCountArray.length; i++) {
         realHeadCount += headCountArray[i];
     }
-    realHeadCount += JSFav.LocalAdults + JSFav.LocalChilds + JSFav.ForeignAdults + JSFav.ForeignChilds + JSFav.Infants;
+    
+   
 
     // console.log(total);
 
@@ -422,6 +426,8 @@ btnPlaceOrder.addEventListener('click',() =>{
             popupDiv.classList.add("open-popup");
             txtForm.reset();
             txtDynamicTotal.innerHTML = ` `;
+
+        localStorage.removeItem('favourite');
     }
 });
 
