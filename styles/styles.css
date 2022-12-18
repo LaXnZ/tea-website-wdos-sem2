@@ -1222,9 +1222,62 @@ form h5{
 }
 
 
-/* Mobile -- Homepage */
+/* Mobile */
+@media screen and (max-width: 1400px) {
+    .table {
+        border-radius: 20px;
+        width: 20%;
+        margin-left: 10px; 
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #000000;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+        
+      }
+      
+      .table td, .table th {
+        display:flow-root;
+        border-radius: 10px;
+        border-width: 2px;
+        /* padding-left: 30px;
+        padding-right: 30px; */
+        border-color: #0c4615;
+        border-style: solid;
+        text-align: center;
+      }
+      .choosingTickets{
+        display: inline-table;
+          width:50%;
+          height: auto;
+          margin-left: 2%;
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          padding-right: 1%;
+          padding-left: 1%;
+       
+      }
+      .choosingTickets p{
+          font-size: 15px;
+          padding-left: 10px;
+          padding-right: 5px;
+          margin-right: 10px;
+          margin-left: 10px;
+          border-left: 2px solid #000000;
+      }
+      
+    
+}
+
 
 @media only screen and (max-width : 1024px) {
+    
+    #overallCostTickets{
+        display: none;
+    }
     .grid-container1{
         grid-template-columns: 1fr 9fr;
         grid-template-rows: 1fr;
@@ -1551,6 +1604,24 @@ form h5{
 }
 
 @media only screen and (max-width : 768px) {
+    #right {
+        display: block;
+        width: 50%; 
+        float:left;
+    }
+
+    .selectDuration{
+        padding-bottom: 10px;
+        padding-top: 10px;
+        width: 70%;
+        height: 55px;
+        margin-left: 10px;
+        padding-left: 2%;
+        padding-right: 1%;
+        border-radius: 15px;
+        border:1.5px solid #000000;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+}
     .grid-container1{
         grid-template-columns: auto 2fr;
         grid-template-rows: 1fr;
@@ -1645,11 +1716,85 @@ form h5{
         margin-left: 20%;
         padding-bottom: 1%;
     }
+    .bookingTopics{
+        font-size: 18px;
+        font-weight:500;
+        margin-left: 20px;
+    }
+
+    .bookingDates {
+        padding-top: 5px;
+        width: 80%;
+        height: 50px;
+        margin-left: 8px;
+        padding-left: 2%;
+        padding-right: 1%;
+        align-content: center;
+        border-radius: 15px;
+        border:1.5px solid #000000;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    }
+    
 }
 
 
 
 @media only screen and (max-width : 640px) {
+    .dynamicTotal{
+        padding-top: 2px;
+        margin-left: 10px;
+        padding-left: 5px;
+        padding-right: 10px;
+        margin-top: 20px;
+        border: 1px solid #000000;
+        height:120px;
+        width: 100px;
+    }
+    .selectDuration{
+        padding-bottom: 10px;
+        padding-top: 10px;
+        width: 80%;
+        height: 55px;
+        margin-left: 10px;
+        padding-left: 2%;
+        padding-right: 1%;
+        border-radius: 15px;
+        border:1.5px solid #000000;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+}
+    .bookingGuests {
+        width: 90%;
+        align-content: center;
+        border-radius: 15px;
+        padding-left: 1%;
+        padding-right: 1%;
+        margin-left: 4%;
+        border:1.5px solid #000000;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+        padding-top: 15px;
+        margin-bottom: 15px;
+    }
+    .bookingGuests section label {
+        font-size: 14px;
+        padding-left: 1%;
+    }
+    
+    .bookingGuests section input {
+        width: 95%;
+        margin-right: 5px;
+    }
+    .bookingTopics{
+        font-size: 13px;
+        font-weight:500;
+        margin-left: 2px;
+    }
+    .donoUI {
+        display: block;
+        width: 30%;
+        align-content: center;
+       
+        padding-bottom: 1%;
+    }
     .grid-container1{
         padding-top: 7px;
         padding-bottom: 7px;
@@ -1808,6 +1953,33 @@ form h5{
 }
 
 @media only screen and (max-width : 348px) {
+    .selectDuration{
+        padding-bottom: 10px;
+        padding-top: 10px;
+        width: 80%;
+        height: 70px;
+        margin-left: 5px;
+        padding-left: 2%;
+        padding-right: 1%;
+        border-radius: 15px;
+        border:1.5px solid #000000;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+}
+    .bookingDates label{
+        font-size: 13.5px;
+    }
+    .bookingDates {
+        padding-top: 5px;
+        width: 90%;
+        height: 50px;
+        margin-left: 5px;
+        padding-left: 2%;
+        padding-right: 1%;
+        align-content: center;
+        border-radius: 15px;
+        border:1.5px solid #000000;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    }
     .grid-container1{
         padding-top: 7px;
         padding-bottom: 7px;

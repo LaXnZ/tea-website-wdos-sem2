@@ -16,6 +16,7 @@ submitDonate.addEventListener('click', () => {
         alert("Please fill all the fields");
     }else{
         popupDiv.classList.add("open-popup");
+        amount.value = "100";
         fName.value = "";
         address.value = "";
         cNumber.value = "";
